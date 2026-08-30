@@ -1,1 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nirbhaya Grid — Trigger Demo</title>
+<meta name="description" content="Live simulated demo of the Nirbhaya Grid automatic anomaly trigger alongside a manual panic button.">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
+  <header class="site-header">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <div class="brand-text">
+        <span class="brand-name">NIRBHAYA GRID</span>
+        <span class="brand-sub">Trigger Demo</span>
+      </div>
+    </div>
+    <nav class="site-nav" aria-label="Primary">
+      <a class="site-nav-link" href="index.html">Home</a>
+      <a class="site-nav-link is-active" href="trigger-demo.html">Live Demo</a>
+      <a class="site-nav-link" href="documents.html">Documents</a>
+    </nav>
+    <div class="header-meta">
+      <div class="meta-item">
+        <span class="meta-label">Kavach Module</span>
+        <span class="meta-value">05 / 08</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Build Status</span>
+        <span class="meta-value">Concept — Simulated</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="hazard-rule" role="presentation"></div>
+
+  <main class="page">
+
+    <div class="demo-mode-badge" role="note">
+      <span class="demo-mode-dot" aria-hidden="true"></span>
+      Simulated Vitals — Conceptual Demonstration, Not Connected to a Real Sensor
+    </div>
+
+    <section class="hero" style="gap: 8px;">
+      <h1 class="hero-pitch" style="font-size: clamp(24px, 3vw, 32px); max-width: none;">See the auto-trigger tell the difference</h1>
+      <p class="hero-sub">Simulated heart-rate and motion data drive the same decision logic the wearable would run. Exercise raises heart rate too — the system is judged on whether it can tell that apart from distress.</p>
+    </section>
+
+    <section class="vitals-row" aria-label="Live simulated vitals">
+      <div class="chart-panel">
+        <div class="panel-head">
+          <span class="panel-eyebrow">CH.1</span>
+          <h3 class="panel-title">Heart Rate</h3>
+          <span class="panel-note">Simulated, live</span>
+        </div>
+        <div class="hr-readout">
+          <span class="hr-value" id="hr-value">76</span>
+          <span class="hr-unit">bpm</span>
+          <span class="hr-state" id="hr-state" data-state="baseline">Baseline</span>
+        </div>
+        <div class="chart-canvas-wrap">
+          <canvas id="hr-chart" role="img" aria-label="Line chart of simulated heart rate over time"></canvas>
+        </div>
+      </div>
+
+      <div class="meter-panel" aria-label="Motion intensity meter">
+        <div class="panel-head" style="margin-bottom:0;">
+          <span class="panel-eyebrow">CH.2</span>
+          <h3 class="panel-title">Motion Intensity</h3>
+        </div>
+        <div class="meter-label-row">
+          <span>Calm</span>
+          <span id="motion-value">08%</span>
+          <span>Erratic</span>
+        </div>
+        <div class="meter-track">
+          <div class="meter-fill" id="motion-fill" data-state="baseline"></div>
+        </div>
+        <p class="meter-caption" id="motion-caption">Steady, low-amplitude movement — consistent with normal daily activity.</p>
+      </div>
+    </section>
+
+    <section class="controls-panel" aria-label="Demo controls">
+      <div class="panel-head" style="margin-bottom: 0;">
+        <span class="panel-eyebrow">Controls</span>
+        <h3 class="panel-title">Try It</h3>
+      </div>
+      <div class="controls-row">
+        <button type="button" class="demo-btn demo-btn-panic" id="btn-panic">Panic Button</button>
+        <button type="button" class="demo-btn demo-btn-exercise" id="btn-exercise">Simulate Exercise</button>
+        <button type="button" class="demo-btn demo-btn-distress" id="btn-distress">Simulate Distress</button>
+        <button type="button" class="demo-btn demo-btn-reset" id="btn-reset">Reset</button>
+      </div>
+      <div class="exercise-note" id="exercise-note">
+        <span class="exercise-note-icon" aria-hidden="true">●</span>
+        <span>Heart rate is elevated, but it rose gradually and motion stayed steady and rhythmic — the signature of exercise, not distress. <strong>No alert triggered.</strong></span>
+      </div>
+    </section>
+
+    <section class="location-panel" id="location-panel" aria-label="Live location, revealed after acknowledging an alert">
+      <svg class="stylized-map" viewBox="0 0 160 140" role="img" aria-label="Stylized map showing last known location">
+        <rect x="1" y="1" width="158" height="138" class="map-bounds" />
+        <line x1="40" y1="0" x2="40" y2="140" class="map-grid" />
+        <line x1="90" y1="0" x2="90" y2="140" class="map-grid" />
+        <line x1="0" y1="45" x2="160" y2="45" class="map-grid" />
+        <line x1="0" y1="95" x2="160" y2="95" class="map-grid" />
+        <path d="M0 70 C 50 40, 90 100, 160 60" class="map-road" />
+        <circle cx="96" cy="66" r="16" class="map-dot-ring" />
+        <circle cx="96" cy="66" r="5" class="map-dot" />
+      </svg>
+      <dl class="location-detail">
+        <dt>Status</dt>
+        <dd id="loc-status">Location shared</dd>
+        <dt>Trigger</dt>
+        <dd id="loc-trigger">—</dd>
+        <dt>Time</dt>
+        <dd id="loc-time">—</dd>
+      </dl>
+    </section>
+
+    <section class="log-panel">
+      <div class="panel-head" style="padding-top: 12px;">
+        <span class="panel-eyebrow">LOG</span>
+        <h3 class="panel-title">Event Log</h3>
+      </div>
+      <ul class="log-list" id="log-list">
+        <li class="log-info"><span class="log-time">--:--:--</span><span>Demo idle — awaiting input.</span></li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <span>Nirbhaya Grid Trigger Demo — simulated sensor data, no wearable hardware connected.</span>
+  </footer>
+
+  <div class="ext-alert-overlay" id="alert-overlay" role="alertdialog" aria-modal="true" aria-labelledby="alert-title" aria-describedby="alert-detail">
+    <div class="ext-alert-card">
+      <div class="ext-alert-icon" aria-hidden="true">⚠</div>
+      <h2 class="ext-alert-title" id="alert-title">ALERT — Distress Detected</h2>
+      <p class="ext-alert-detail" id="alert-detail">Trigger: —</p>
+      <button type="button" class="ext-alert-ack" id="alert-ack">Acknowledge</button>
+    </div>
+  </div>
+
+  <script src="js/trigger-demo.js"></script>
+</body>
+</html>
