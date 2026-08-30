@@ -1,1 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nirbhaya Grid — Women's Safety Auto-Trigger</title>
+<meta name="description" content="Nirbhaya Grid — a secondary, automatic anomaly-triggered alert path for women's safety, alongside the standard manual panic button. A Project Kavach module.">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
+  <header class="site-header">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <div class="brand-text">
+        <span class="brand-name">NIRBHAYA GRID</span>
+        <span class="brand-sub">Women's Safety Auto-Trigger</span>
+      </div>
+    </div>
+    <nav class="site-nav" aria-label="Primary">
+      <a class="site-nav-link is-active" href="index.html">Home</a>
+      <a class="site-nav-link" href="trigger-demo.html">Live Demo</a>
+      <a class="site-nav-link" href="documents.html">Documents</a>
+    </nav>
+    <div class="header-meta">
+      <div class="meta-item">
+        <span class="meta-label">Kavach Module</span>
+        <span class="meta-value">05 / 08</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Build Status</span>
+        <span class="meta-value">Concept</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="hazard-rule" role="presentation"></div>
+
+  <main class="page">
+
+    <div class="badge badge-concept" role="note">
+      <span class="badge-dot" aria-hidden="true"></span>
+      Concept &amp; Design Only — No Hardware Built
+    </div>
+
+    <section class="hero">
+      <h1 class="hero-pitch">The alert doesn't wait for <em>a hand that's free</em>.</h1>
+      <p class="hero-sub">A second, automatic path into the same alert chain as a manual panic button — so a fall in heart rate signal never depends on someone being conscious, unrestrained, and able to press anything.</p>
+    </section>
+
+    <section class="card card-exists" aria-labelledby="exists-title">
+      <div class="card-head">
+        <span class="panel-eyebrow">Context</span>
+        <h2 class="panel-title" id="exists-title">What Already Exists</h2>
+      </div>
+      <p class="card-body">Manual panic-button wearables — a pendant, a ring, a phone app with a hold-to-trigger button — are already a well-established category, sold widely and built into several existing personal-safety products. They work: they send an SMS or call with a live location the moment someone presses them. <strong>The category isn't new, and we're not presenting it as if it were.</strong></p>
+      <p class="card-body" style="margin-top:12px;">Their shared weak point is the precondition baked into all of them: the wearer has to be conscious, free to move a hand, and able to physically find and press a button. That's precisely the condition that often isn't met in a real assault.</p>
+    </section>
+
+    <section class="card card-changed" aria-labelledby="changed-title">
+      <div class="card-head">
+        <span class="panel-eyebrow">Our Contribution</span>
+        <h2 class="panel-title" id="changed-title">What We Changed</h2>
+      </div>
+      <p class="card-body">We add a low-cost heart-rate and accelerometer anomaly detector as an <strong>automatic secondary trigger</strong>, running alongside — never replacing — the manual button. A sudden, sharp spike in heart rate combined with irregular, forceful motion is enough to fire the same alert chain on its own.</p>
+      <p class="card-body" style="margin-top:12px;">That alert chain is the one already proven in Extingo and Rakshak — SMS, a call, and a live location — so this module doesn't invent a new gadget or a new app; it plugs a missing trigger path into infrastructure that already works.</p>
+      <span class="card-differentiator">Automatic path fires even if the wearer can't act</span>
+    </section>
+
+    <section class="flow-section" aria-labelledby="flow-title">
+      <div class="card-head">
+        <span class="panel-eyebrow">How It Works</span>
+        <h2 class="panel-title" id="flow-title">Trigger to Alert</h2>
+      </div>
+
+      <div class="flow">
+        <div class="flow-step">
+          <span class="flow-step-num">STEP 1</span>
+          <h3 class="flow-step-title">Monitor Vitals &amp; Motion</h3>
+          <p class="flow-step-desc">Wearable continuously reads heart rate and accelerometer data in the background — no action needed from the wearer.</p>
+        </div>
+
+        <div class="flow-arrow" aria-hidden="true">→</div>
+
+        <div class="flow-step is-branch">
+          <span class="flow-step-num">STEP 2</span>
+          <h3 class="flow-step-title">Detect Anomaly <em style="font-style:normal;color:var(--violet);">or</em> Manual Press</h3>
+          <div class="flow-branch-paths">
+            <span class="flow-branch-path is-auto">Auto — HR spike + erratic motion</span>
+            <span class="flow-branch-path is-manual">Manual — button press</span>
+          </div>
+        </div>
+
+        <div class="flow-arrow" aria-hidden="true">→</div>
+
+        <div class="flow-step is-alert">
+          <span class="flow-step-num">STEP 3</span>
+          <h3 class="flow-step-title">Alert + Live Location</h3>
+          <p class="flow-step-desc">SMS and a call go out with a live location link, through the same Kavach alert chain used by Extingo and Rakshak.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <span>Nirbhaya Grid — a Project Kavach module. Concept &amp; design only, no hardware built.</span>
+  </footer>
+
+</body>
+</html>
